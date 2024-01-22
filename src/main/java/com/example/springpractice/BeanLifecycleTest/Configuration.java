@@ -5,17 +5,16 @@ import org.springframework.context.annotation.Bean;
 
 @org.springframework.context.annotation.Configuration
 public class Configuration {
-	
-	@Bean(initMethod="initConfigMethod", destroyMethod="destroyConfigMethod")
-	public TestBean confTestBean(
-			ConstructorBean constructorBean) {
-		System.out.println("Configure: происходит конфигурация " +
-				                   "TestBean" );
-		return new TestBean(constructorBean);
-	}
-	
-	@Bean
-	public BeanPostProcessor LifecycleProcessor() {
-		return new Processor("confTestBean");
-	}
+
+    @Bean(initMethod = "initConfigMethod", destroyMethod = "destroyConfigMethod")
+    public TestBean confTestBean(ConstructorBean constructorBean) {
+        System.out.println("Configure: происходит конфигурация TestBean");
+        return new TestBean(constructorBean);
+    }
+
+    @Bean
+    public BeanPostProcessor LifecycleProcessor() {
+        return new Processor("confTestBean");
+    }
+
 }
